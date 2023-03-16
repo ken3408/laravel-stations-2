@@ -7,9 +7,9 @@
     <title>作品リスト</title>
 </head>
 <body>
-  <form class="form-inline" id="search-form" method="GET" action="{{ route('movie.search') }}">
+  <form class="form-inline" id="search-form" method="GET" action="{{ route('movie.index') }}">
       <!--$wordの値がセットされていれば、$wordの値を、セットされていなければ値は空を返します。-->
-      <input class="form-control mr-sm-2" id="search-input" type="search" name="search" placeholder="キーワードを入力" value="{{ isset($keyword) ? $keyword : '' }}">
+      <input class="form-control mr-sm-2" id="search-input" type="search" name="keyword" placeholder="キーワードを入力" value="{{ isset($keyword) ? $keyword : '' }}">
       <br>
       @php 
         $show = ['すべて' => "0,1", '公開中' => 1, '公開予定' => 0];

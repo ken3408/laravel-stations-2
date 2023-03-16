@@ -28,7 +28,7 @@ Route::get('/practice2', [PracticeController::class, 'sample2']);
 Route::get('/practice3', [PracticeController::class, 'sample3']);
 Route::get('/getPractice', [PracticeController::class, 'getPractice']);
 Route::get('/movies', [MovieController::class, 'index'])->name('movie.index');
-Route::get('/movies/search', [MovieController::class, 'search'])->name('movie.search');
+//Route::get('/movies/search', [MovieController::class, 'search'])->name('movie.search');
 Route::get('admin/movies', [AdminMovieController::class, 'index'])->name('admin.movies');
 Route::get('admin/movies/create', [AdminMovieController::class, 'create']);
 Route::post('admin/movies/store', [AdminMovieController::class, 'store'])->name('admin.movies.store');
