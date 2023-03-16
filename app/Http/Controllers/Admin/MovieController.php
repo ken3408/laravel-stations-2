@@ -26,13 +26,13 @@ class MovieController extends Controller
   {
     DB::beginTransaction();
     try {
-      $check = Genre::where('name', '=', $request->name)->exists();
+      $check = Genre::where('name', '=', $request->genre)->exists();
       //dd($check);
       if ($check) {
-        $genre = Genre::where('name', $request->name)->first();
+        $genre = Genre::where('name', $request->genre)->first();
       } else {
-        $genre = new Genre($request->get('genre', [
-          'name' => $request->name
+        $genre = new Genre($request->get('name', [
+          'name' => $request->genre
         ]));
         $genre->save();
       }
@@ -46,8 +46,10 @@ class MovieController extends Controller
       ]);
       DB::commit();
       return redirect('admin/movies')->with('message', '新しい作品を登録しました');
-    } catch (Exception $e) {
+    } catch (\Throwable $e) {
       DB::rollback();
+      report($e);
+      abort(500);
     }
   }
   public function edit(Request $request)
@@ -60,13 +62,13 @@ class MovieController extends Controller
   {
     DB::beginTransaction();
     try {
-      $check = Genre::where('name', '=', $request->name)->exists();
+      $check = Genre::where('name', '=', $request->genre)->exists();
       //dd($check);
       if ($check) {
-        $genre = Genre::where('name', $request->name)->first();
+        $genre = Genre::where('name', $request->genre)->first();
       } else {
-        $genre = new Genre($request->get('genre', [
-          'name' => $request->name
+        $genre = new Genre($request->get('name', [
+          'name' => $request->genre
         ]));
         $genre->save();
       }
@@ -81,8 +83,10 @@ class MovieController extends Controller
       ]);
       DB::commit();
       return redirect('admin/movies')->with('message', '作品を更新しました');
-    } catch (Exception $e) {
+    } catch (\Throwable $e) {
       DB::rollback();
+      report($e);
+      abort(500);
     }
   }
   public function delete($id)

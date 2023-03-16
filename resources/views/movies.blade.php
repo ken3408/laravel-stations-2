@@ -7,7 +7,7 @@
     <title>作品リスト</title>
 </head>
 <body>
-  <form class="form-inline" id="search-form" method="GET" action="{{ route('movie.index') }}">
+  <form class="form-inline" id="search-form" method="GET" action="{{ route('movie.search') }}">
       <!--$wordの値がセットされていれば、$wordの値を、セットされていなければ値は空を返します。-->
       <input class="form-control mr-sm-2" id="search-input" type="search" name="search" placeholder="キーワードを入力" value="{{ isset($keyword) ? $keyword : '' }}">
       <br>
@@ -26,10 +26,12 @@
   </form>
     <ul>
     @foreach ($movies as $movie)
-        <li>タイトル: {{ $movie->title }}</li>
-        <li>説明: {{ $movie->description }}</li>
-        <li>公開中かどうか: {{ $movie->is_showing }}</li>
-        <img src="{{ url($movie->image_url) }}">
+    <li>タイトル: {{ $movie->title }}</li>
+    <li>映画url: {{ $movie->image_url }}</li>
+    <li>公開年: {{ $movie->published_year }}</li>
+    <li>上映中: {{ $movie->is_showing? '上映中' : '上映予定' }}</li>
+    <li>概要: {{ $movie->description}}</li>
+    <li>ジャンルid: {{ $movie->genre_id}}</li>
     @endforeach
     </ul>
     {{ $movies->appends(request()->query())->links() }}

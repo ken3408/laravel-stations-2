@@ -44,10 +44,9 @@
         <td>{{ $admin_movie->title }}</td>
         <td>{{ $admin_movie->image_url }}</td>
         <td>{{ $admin_movie->published_year }}</td>
-        <td>{{ $admin_movie->is_showing }}</td>
+        <td>{{ $admin_movie->is_showing? '上映中' : '上映予定' }}</td>
         <td>{{ $admin_movie->description }}</td>
         <td>{{ $admin_movie->created_at }}</td>
-        <td>{{ $admin_movie->updated_at }}</td>
         <td>{{ $admin_movie->updated_at }}</td>
         <td>{{ $admin_movie->genre_id }}</td>
         <td><a href="/admin/movies/{{ $admin_movie->id }}/edit/"><button type="button" class="btn btn-primary">編集</button></a></td>
@@ -62,5 +61,6 @@
       @endforeach
     </tbody>
   </table>
+  <a href="/admin/movies/create">新規作成</a>
 </body>
 </html>

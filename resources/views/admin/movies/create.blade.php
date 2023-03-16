@@ -8,7 +8,7 @@
 @foreach ($errors->all() as $error)
   <li>{{$error}}</li>
 @endforeach
-<form action="{{ route('admin.movies.add') }}" method="POST">
+<form action="{{ route('admin.movies.store') }}" method="POST">
   @csrf
 	<p>映画タイトル：<br>
 	<input type="text" name="title"></p>
@@ -19,10 +19,10 @@
 	<p>説明：<br>
   <textarea name="description" id="" cols="30" rows="10">{{ old('description') }}</textarea></p>
   <p>ジャンル：<br>
-    <input type="text" name="name"></p>
+    <input type="text" name="genre"></p>
 	<p>公開中かどうか：<br>
-    <input type="radio" name="is_showing" value="1"> はい
-    <input type="radio" name="is_showing" value="0"> いいえ
+    <input type="hidden" name="is_showing" value="0">
+    <input type="checkbox" name="is_showing" id="form-is-showing" value="1">
     <br>
     <button>送信</button>
 </form>
