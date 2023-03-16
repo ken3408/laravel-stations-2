@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PracticeController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\SheetController;
 use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\Controller;
 
@@ -43,3 +44,5 @@ Route::patch('/admin/movies/{id}/update', [AdminMovieController::class, 'update'
  * 削除
  */
 Route::delete('/admin/movies/{id}/destroy', [AdminMovieController::class, 'delete'])->name('admin.movies.delete');
+
+Route::get('/sheets', [SheetController::class, 'index'])->name('sheets.index');
