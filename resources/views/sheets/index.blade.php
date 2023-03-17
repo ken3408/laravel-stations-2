@@ -12,20 +12,11 @@
   @endif
 
   <table class="table table-striped">
-    <tr>
-      <th>座席【1】</th>
-      <th>座席【2】</th>
-      <th>座席【3】</th>
-      <th>座席【4】</th>
-      <th>座席【5】</th>
-    </tr>
-    @foreach ($chunks as $row)
-    <tr>
-      @foreach ($row as $sheet)
-      <td>{{ $sheet['column'] }}-{{ $sheet['row'] }}</td>
-      @endforeach
-    </tr>
-    @endforeach
+@foreach ($sheets as $sheet)
+<tr>
+  <td>{{ $sheet->row .'-'. $sheet->column }}</td>
+</tr>
+@endforeach
   </table>
 </body>
 </html>
