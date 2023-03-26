@@ -26,7 +26,7 @@
   </form>
     <ul>
     @foreach ($movies as $movie)
-    <li>タイトル: {{ $movie->title }}</li>
+    <li>タイトル: <a href="{{ route('movies.show', ['id' => $movie->id]) }}">{{ $movie->title }}</a></li>
     <li>映画url: {{ $movie->image_url }}</li>
     <li>公開年: {{ $movie->published_year }}</li>
     <li>上映中: {{ $movie->is_showing? '上映中' : '上映予定' }}</li>

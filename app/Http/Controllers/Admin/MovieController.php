@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Models\Genre;
+use App\Models\Schedule;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CreateMovieRequest;
 use Exception;
@@ -17,6 +18,15 @@ class MovieController extends Controller
   {
     $admin_movies = Movie::all();
     return view('admin.movies', ['admin_movies' => $admin_movies]);
+  }
+  public function show(Request $request)
+  {
+    $movies = Movie::where('id', $request->id)->first();
+    $schedules = Schedule::where('movie_id', $request->id)
+      ->oldest('start_time')
+      ->get();
+    //dd($schedule);
+    return view('admin.movies.show', compact('movies', 'schedules'));
   }
   public function create()
   {

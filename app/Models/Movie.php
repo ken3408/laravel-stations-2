@@ -15,6 +15,11 @@ class Movie extends Model
   {
     return $this->belongsTo(Genre::class);
   }
+  //リレーション元（主）
+  public function schedules()
+  {
+    return $this->hasMany('App\Models\Schedule');
+  }
   protected $fillable = [
     'title',
     'image_url',
